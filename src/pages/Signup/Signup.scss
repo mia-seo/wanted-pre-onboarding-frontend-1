@@ -1,0 +1,36 @@
+@import '../../styles/variables.scss';
+
+.signup {
+  @include wh(100vw, 100vh);
+  @include flex(column, center, center);
+
+  h1 {
+    font-size: 40px;
+    font-weight: bolder;
+  }
+
+  .signupForm {
+    @include wh(300px, 300px);
+    @include flex(column, center, center);
+    gap: 30px;
+  }
+
+  .inputBox {
+    display: flex;
+    gap: 10px;
+  }
+
+  label {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  input {
+    padding: 0 5px;
+  }
+
+  button {
+    @include wh(100px, 50px);
+    font-size: 20px;
+  }
+}
