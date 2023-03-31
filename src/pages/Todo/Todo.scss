@@ -1,0 +1,30 @@
+@import '../../styles/variables.scss';
+
+.todo {
+  @include wh(100vw, 100vh);
+  @include flex(column, center, center);
+
+  h1 {
+    font-size: 40px;
+    font-weight: bolder;
+  }
+
+  .todoContainer {
+    @include wh(300px, 300px);
+    @include flex(column, center, center);
+    gap: 30px;
+
+    .createTodo,
+    .todoList {
+      display: flex;
+      gap: 10px;
+    }
+
+    .createTodo {
+      input {
+        @include wh(200px, 30px);
+        padding: 0 5px;
+      }
+    }
+  }
+}
