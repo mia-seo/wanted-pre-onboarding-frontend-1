@@ -26,7 +26,7 @@ const Signin = () => {
 
   const signin = (e, email, password) => {
     e.preventDefault();
-    fetch('http://localhost:8000/auth/signin', {
+    fetch('https://pre-onboarding-selection-task.shop/auth/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,12 +36,11 @@ const Signin = () => {
         password,
       }),
     })
-      .then(res => res.json)
+      .then(res => res.json())
       .then(data => {
-        if (data.access_token) {
-          localStorage.setItem('token', data.access_token);
-          navigate('/todo');
-        }
+        localStorage.setItem('token', data.access_token);
+        alert('로그인 성공!');
+        navigate('/todo');
       });
     setEmail('');
     setPassword('');
