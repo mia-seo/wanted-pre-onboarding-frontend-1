@@ -1,0 +1,25 @@
+@import '../../styles/variables.scss';
+
+.mainContainer {
+  @include wh(100vw, 100vh);
+  @include flex(column, center, center);
+  gap: 30px;
+
+  h1 {
+    font-size: 40px;
+    font-weight: bolder;
+  }
+
+  .btnContainer {
+    display: flex;
+    gap: 15px;
+
+    button {
+      @include wh(150px, 40px);
+      background-color: black;
+      border-radius: 15px;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}

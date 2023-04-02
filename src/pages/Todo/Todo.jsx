@@ -31,8 +31,13 @@ const Todo = () => {
         <TodoInput />
         <div>
           {todos &&
-            todos.map(({ id, todo }) => (
-              <TodoList id={id} todo={todo} key={id} />
+            todos.map(({ id, todo, isCompleted }) => (
+              <TodoList
+                id={id}
+                todo={todo}
+                isCompleted={isCompleted}
+                key={id}
+              />
             ))}
         </div>
       </div>
