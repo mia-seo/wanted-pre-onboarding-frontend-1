@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const TodoList = ({ id, todo }) => {
+const TodoList = ({ id, todo, isCompleted }) => {
+  const [isChecked, setIsChecked] = useState(isCompleted);
   const [isEdit, setIsEdit] = useState(false);
   const [editedTodo, setEditedTodo] = useState(todo);
 
@@ -17,9 +18,12 @@ const TodoList = ({ id, todo }) => {
     setIsEdit(prev => !prev);
     setEditedTodo(todo);
   };
+
   const handleChangeInput = e => setEditedTodo(e.target.value);
 
-  const updateTodo = (id, editedTodo) => {
+  const handleCheckBox = () => setIsChecked(!isChecked);
+
+  const updateTodo = (id, editedTodo, isChecked) => {
     fetch(`https://pre-onboarding-selection-task.shop/todos/${id}`, {
       method: 'PUT',
       headers: {
@@ -28,7 +32,7 @@ const TodoList = ({ id, todo }) => {
       },
       body: JSON.stringify({
         todo: editedTodo,
-        isCompleted: true,
+        isCompleted: isChecked,
       }),
     }).then(() => window.location.reload());
   };
@@ -38,7 +42,11 @@ const TodoList = ({ id, todo }) => {
       {!isEdit ? (
         <li className="todoList" key={id}>
           <label>
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={handleCheckBox}
+            />
             <span>{todo}</span>
           </label>
           <button data-testid="modify-button" onClick={changeEditState}>
@@ -51,7 +59,11 @@ const TodoList = ({ id, todo }) => {
       ) : (
         <li className="todoList" key={id}>
           <label>
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={handleCheckBox}
+            />
             <input
               type="text"
               value={editedTodo || ''}
@@ -60,7 +72,7 @@ const TodoList = ({ id, todo }) => {
           </label>
           <button
             data-testid="submit-button"
-            onClick={() => updateTodo(id, editedTodo)}
+            onClick={() => updateTodo(id, editedTodo, isChecked)}
           >
             submit
           </button>
