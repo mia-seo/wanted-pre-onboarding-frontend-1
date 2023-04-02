@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const TodoList = ({ id, todo, isCompleted }) => {
   const [isChecked, setIsChecked] = useState(isCompleted);
