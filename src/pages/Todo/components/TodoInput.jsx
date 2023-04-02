@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 
 const TodoInput = () => {
-  const [value, setValue] = useState();
+  const [todo, setTodo] = useState();
 
   const handleInputChange = e => {
-    setValue(e.target.value);
+    setTodo(e.target.value);
   };
 
-  const createTodo = (e, value) => {
+  const createTodo = (e, todo) => {
     e.preventDefault();
+    if (todo === '') return;
     fetch('https://pre-onboarding-selection-task.shop/todos', {
       method: 'POST',
       headers: {
@@ -16,9 +17,12 @@ const TodoInput = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        todo: value,
+        todo,
       }),
-    }).then(() => setValue(''));
+    }).then(() => {
+      setTodo('');
+      window.location.reload();
+    });
   };
 
   return (
@@ -26,13 +30,13 @@ const TodoInput = () => {
       <input
         type="text"
         data-testid="new-todo-input"
-        value={value || ''}
+        value={todo || ''}
         onChange={handleInputChange}
       />
       <button
         data-testid="new-todo-add-button"
         onClick={e => {
-          createTodo(e, value);
+          createTodo(e, todo);
         }}
       >
         create

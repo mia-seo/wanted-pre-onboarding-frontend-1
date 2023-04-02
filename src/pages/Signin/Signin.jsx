@@ -45,6 +45,9 @@ const Signin = () => {
     setEmail('');
     setPassword('');
   };
+
+  const goToSignup = () => navigate('/signup');
+
   return (
     <div className="signin">
       <h1>SignIn</h1>
@@ -76,6 +79,7 @@ const Signin = () => {
           submit
         </button>
       </form>
+      <button onClick={goToSignup}>signup</button>
     </div>
   );
 };

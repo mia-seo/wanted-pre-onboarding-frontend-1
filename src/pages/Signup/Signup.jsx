@@ -36,13 +36,14 @@ const Signup = () => {
         password,
       }),
     }).then(res => {
-      console.log(res);
       alert(res.statusText);
       navigate('/signin');
     });
     setEmail('');
     setPassword('');
   };
+
+  const goToSignin = () => navigate('/signin');
   return (
     <div className="signup">
       <h1>SignUp</h1>
@@ -74,6 +75,7 @@ const Signup = () => {
           submit
         </button>
       </form>
+      <button onClick={goToSignin}>signin</button>
     </div>
   );
 };
