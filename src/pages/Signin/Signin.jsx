@@ -26,7 +26,7 @@ const Signin = () => {
 
   const signin = (e, email, password) => {
     e.preventDefault();
-    fetch('https://pre-onboarding-selection-task.shop/auth/signin', {
+    fetch('https://www.pre-onboarding-selection-task.shop/auth/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -6,7 +6,7 @@ const TodoList = ({ id, todo, isCompleted }) => {
   const [editedTodo, setEditedTodo] = useState(todo);
 
   const deleteTodo = id => {
-    fetch(`https://pre-onboarding-selection-task.shop/todos/${id}`, {
+    fetch(`https://www.pre-onboarding-selection-task.shop/todos/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -24,7 +24,7 @@ const TodoList = ({ id, todo, isCompleted }) => {
   const handleCheckBox = () => setIsChecked(!isChecked);
 
   const updateTodo = (id, editedTodo, isChecked) => {
-    fetch(`https://pre-onboarding-selection-task.shop/todos/${id}`, {
+    fetch(`https://www.pre-onboarding-selection-task.shop/todos/${id}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,

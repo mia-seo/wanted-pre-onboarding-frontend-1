@@ -15,7 +15,7 @@ const Todo = () => {
   );
 
   useEffect(() => {
-    fetch('https://pre-onboarding-selection-task.shop/todos', {
+    fetch('https://www.pre-onboarding-selection-task.shop/todos', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
