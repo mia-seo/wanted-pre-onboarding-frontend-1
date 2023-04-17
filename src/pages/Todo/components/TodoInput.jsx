@@ -10,7 +10,7 @@ const TodoInput = () => {
   const createTodo = (e, todo) => {
     e.preventDefault();
     if (todo === '') return;
-    fetch('https://pre-onboarding-selection-task.shop/todos', {
+    fetch('https://www.pre-onboarding-selection-task.shop/todos', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
